@@ -14,9 +14,9 @@ namespace _16.Be_Positive
         {
             int sizeOfArray = int.Parse(Console.ReadLine());
 
-            int[] array = Console.ReadLine()
+            long[] array = Console.ReadLine()
                 .Split(ArgumentsDelimiter)
-                .Select(int.Parse)
+                .Select(long.Parse)
                 .ToArray();
 
             string command = Console.ReadLine();

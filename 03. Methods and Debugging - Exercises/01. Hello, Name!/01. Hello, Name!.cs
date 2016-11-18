@@ -11,10 +11,10 @@ namespace _01.Hello__Name_
         static void Main(string[] args)
         {
             var name = Console.ReadLine();
-            HelloName(name);
+            PrintHelloName(name);
         }
 
-        private static void HelloName(string name)
+        private static void PrintHelloName(string name)
         {
             Console.WriteLine("Hello, {0}!",name);
         }
