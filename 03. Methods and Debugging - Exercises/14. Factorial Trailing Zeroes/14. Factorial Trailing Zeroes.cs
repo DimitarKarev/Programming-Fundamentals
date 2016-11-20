@@ -13,7 +13,7 @@ namespace _14.Factorial_Trailing_Zeroes
         {
             var n = int.Parse(Console.ReadLine());
             BigInteger factorial = 1;
-            var trailingZeroes = 0;
+            int trailingZeroes = 0;
 
             factorial = CalculateFactorial(n, factorial);
             trailingZeroes = CalcTrailingZeroes(factorial, trailingZeroes);
@@ -23,10 +23,10 @@ namespace _14.Factorial_Trailing_Zeroes
 
         private static int CalcTrailingZeroes(BigInteger factorial, int trailingZeroes)
         {
-            BigInteger currentDigit;
+            int currentDigit;
             while (true)
             {
-                currentDigit = factorial % 10;
+                currentDigit = (int)(factorial % 10);
                 if (currentDigit == 0) trailingZeroes++;
                 else break;
                 factorial /= 10;

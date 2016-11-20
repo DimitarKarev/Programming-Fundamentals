@@ -8,91 +8,67 @@ namespace _16.Be_Positive
 {
     class Program
     {
-        private static char[] ArgumentsDelimiter;
-
-        public static void Main()
+        static void Main()
         {
-            int sizeOfArray = int.Parse(Console.ReadLine());
 
-            long[] array = Console.ReadLine()
-                .Split(ArgumentsDelimiter)
-                .Select(long.Parse)
-                .ToArray();
+            int countSequences = int.Parse(Console.ReadLine());
 
-            string command = Console.ReadLine();
-
-            while (!command.Equals("over"))
+            for (int i = 0; i < countSequences; i++)
             {
-                string line = Console.ReadLine().Trim();
-                int[] args = new int[2];
+                string[] input = Console.ReadLine().Trim().Split(' ');
+                var numbers = new List<int>();
 
-                if (command.Equals("add") ||
-                    command.Equals("substract") ||
-                    command.Equals("multiply"))
+                for (int j = 0; j < input.Length; j++)
                 {
-                    string[] stringParams = line.Split(ArgumentsDelimiter);
-                    args[0] = int.Parse(stringParams[0]);
-                    args[1] = int.Parse(stringParams[1]);
-
-                    PerformAction(array, command, args);
+                    if (!input[j].Equals(string.Empty))
+                    {
+                        int num = int.Parse(input[j]);
+                        numbers.Add(num);
+                    }
                 }
 
-                PerformAction(array, command, args);
+                bool found = false;
 
-                PrintArray(array);
-                Console.WriteLine('\n');
+                for (int j = 0; j < numbers.Count; j++)
+                {
+                    int currentNum = numbers[j];
 
-                command = Console.ReadLine();
-            }
-        }
+                    if (currentNum >= 0) 
+                    {
+                        if (found)
+                        {
+                            Console.Write(" ");
+                        }
 
-        static void PerformAction(long[] arr, string action, int[] args)
-        {
-            long[] array = arr.Clone() as long[];
-            int pos = args[0];
-            int value = args[1];
+                        Console.Write(currentNum);
 
-            switch (action)
-            {
-                case "multiply":
-                    array[pos] *= value;
-                    break;
-                case "add":
-                    array[pos] += value;
-                    break;
-                case "subtract":
-                    array[pos] -= value;
-                    break;
-                case "lshift":
-                    ArrayShiftLeft(array);
-                    break;
-                case "rshift":
-                    ArrayShiftRight(array);
-                    break;
-            }
-        }
+                        found = true;
+                    }
+                    else if (j + 1 < numbers.Count)
+                    {
+                        currentNum += numbers[j + 1];
 
-        private static void ArrayShiftRight(long[] array)
-        {
-            for (int i = array.Length - 1; i >= 1; i--)
-            {
-                array[i] = array[i - 1];
-            }
-        }
+                        if (currentNum >= 0)
+                        {
+                            if (found)
+                            {
+                                Console.Write(" ");
+                            }
 
-        private static void ArrayShiftLeft(long[] array)
-        {
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                array[i] = array[i + 1];
-            }
-        }
+                            Console.Write(currentNum);
 
-        private static void PrintArray(long[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine(array[i] + " ");
+                            found = true;
+                        }
+                        j++;
+                    }
+                }
+
+                if (!found)
+                {
+                    Console.WriteLine("(empty)");
+                }
+                else
+                { Console.WriteLine(); }
             }
         }
     }
