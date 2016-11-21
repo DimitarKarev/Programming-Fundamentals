@@ -10,7 +10,14 @@ namespace _06.Reverse_Array_of_Strings
     {
         static void Main(string[] args)
         {
-            
+            var input = Console.ReadLine().Split(' ').ToArray();
+            var reversed = new string[input.Length];
+
+            for (int i = 0; i < reversed.Length; i++)
+            {
+                reversed[i] = input[input.Length - 1 - i];
+            }
+            Console.WriteLine(string.Join(" ",reversed));
         }
     }
 }
