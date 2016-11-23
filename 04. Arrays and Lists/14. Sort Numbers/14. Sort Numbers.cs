@@ -10,7 +10,9 @@ namespace _14.Sort_Numbers
     {
         static void Main(string[] args)
         {
-            
+            var numbers = Console.ReadLine().Split().Select(int.Parse).ToList();
+            numbers.Sort();
+            Console.WriteLine(string.Join(" <= ",numbers));
         }
     }
 }
