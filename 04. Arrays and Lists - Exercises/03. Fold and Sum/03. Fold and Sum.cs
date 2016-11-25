@@ -45,8 +45,7 @@ namespace _03.Fold_and_Sum
         {
             for (int i = 0; i < 2 * k; i++)
             {
-                if (i < k)
-                    sum[i] = leftSide[i] + middle[i];
+                if (i < k) sum[i] = leftSide[i] + middle[i];
                 else sum[i] = rightSide[i - k] + middle[i];
             }
             Console.WriteLine(string.Join(" ", sum));
