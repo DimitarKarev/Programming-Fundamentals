@@ -10,7 +10,18 @@ namespace _04.Largest_3_Numbers
     {
         static void Main(string[] args)
         {
-            
+            int[] numbers = GetLargest3Numbers();
+
+            Console.WriteLine(string.Join(" ", numbers));
+        }
+
+        private static int[] GetLargest3Numbers()
+        {
+            return Console.ReadLine().Split()
+                                     .Select(int.Parse)
+                                     .OrderByDescending(x => x)
+                                     .Take(3)
+                                     .ToArray();
         }
     }
 }
