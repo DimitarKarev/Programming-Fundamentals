@@ -10,7 +10,45 @@ namespace _01.Phonebook
     {
         static void Main(string[] args)
         {
-            
+            var input = Console.ReadLine().Split().ToArray();
+            Dictionary<string, string> phonebook = new Dictionary<string, string>();
+            var command = input[0];
+
+            while (! command.Equals("END"))
+            {
+                if (command.Equals("A"))
+                {
+                    AddNewContact(input, phonebook);
+                }
+                else if (command.Equals("S"))
+                {
+                    PrintContact(input, phonebook);
+                }
+
+                input = Console.ReadLine().Split().ToArray();
+                command = input[0];
+            }
+        }
+
+        private static void AddNewContact(string[] input, Dictionary<string, string> phonebook)
+        {
+            string contact = input[1];
+            var number = input[2];
+
+            phonebook[contact] = number;
+        }
+
+        private static void PrintContact(string[] input, Dictionary<string, string> phonebook)
+        {
+            string contact = input[1];
+            if (phonebook.ContainsKey(contact))
+            {
+                Console.WriteLine("{0} -> {1}", contact, phonebook[contact]);
+            }
+            else
+            {
+                Console.WriteLine("Contact {0} does not exist.", contact);
+            }
         }
     }
 }
