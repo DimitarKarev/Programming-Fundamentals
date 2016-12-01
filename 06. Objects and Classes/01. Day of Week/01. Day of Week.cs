@@ -11,7 +11,16 @@ namespace _01.Day_of_Week
     {
         static void Main(string[] args)
         {
-            
+            var dateAsText = Console.ReadLine();
+
+            DateTime date = ConvertTextToDate(dateAsText);
+
+            Console.WriteLine(date.DayOfWeek);
+        }
+
+        private static DateTime ConvertTextToDate(string dateAsText)
+        {
+            return DateTime.ParseExact(dateAsText, "d-M-yyyy", CultureInfo.InvariantCulture);
         }
     }
 }
