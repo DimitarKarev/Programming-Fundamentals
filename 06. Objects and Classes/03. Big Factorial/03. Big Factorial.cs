@@ -13,8 +13,20 @@ namespace _03.Big_Factorial
         {
             int n = int.Parse(Console.ReadLine());
             BigInteger factorial = 1;
-            for (int i = 2; i <= n; i++) factorial *= i;
+
+            factorial = CalcFactorial(n, factorial);
+
             Console.WriteLine(factorial);
+        }
+
+        private static BigInteger CalcFactorial(int n, BigInteger factorial)
+        {
+            for (int i = 2; i <= n; i++)
+            {
+                factorial *= i;
+            }
+
+            return factorial;
         }
     }
 }
