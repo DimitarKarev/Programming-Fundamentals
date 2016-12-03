@@ -10,7 +10,18 @@ namespace _01.Reverse_String
     {
         static void Main(string[] args)
         {
-            
+            string word = Console.ReadLine();
+
+            char[] reversedWord = ReverseString(word);
+
+            Console.WriteLine(string.Join("", reversedWord));
+        }
+
+        private static char[] ReverseString(string word)
+        {
+            char[] reversedWord = word.ToCharArray();
+            Array.Reverse(reversedWord);
+            return reversedWord;
         }
     }
 }
