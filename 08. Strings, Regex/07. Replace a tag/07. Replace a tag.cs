@@ -11,13 +11,24 @@ namespace _07.Replace_a_tag
     {
         static void Main(string[] args)
         {
-            string a = "abc";
-            string b = "";
-            for (int i = a.Length - 1; i >= 0; i--)
+            string text = Console.ReadLine();
+            while (text != "end")
             {
-                b += a[i];
+                string replaced = Replace(text);
+
+                Console.WriteLine(replaced);
+
+                text = Console.ReadLine();
             }
-            Console.WriteLine(b);
+        }
+
+        private static string Replace(string text)
+        {
+            string pattern = @"<a.*?href.*?=(.*)>(.*?)<\/a>";
+            string replace = @"[URL href=$1]$2[/URL]";
+            string replaced = Regex.Replace(text, pattern, replace);
+
+            return replaced;
         }
     }
 }
